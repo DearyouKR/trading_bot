@@ -1,2 +1,2 @@
-RUN chmod a+x ./app.py
-ENTRYPOINT [ "./app.py" ]
+RUN chmod a+x ./main.py
+ENTRYPOINT [ "./main.py" ]
