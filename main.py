@@ -34,57 +34,109 @@ symbol_m = [
 
 # 买入成交量
 while True:
-    buy_list = []
+    buy_list_5 = []
     for i in symbol_m:
-        url = 'https://api3.binance.com/api/v3/klines?symbol=' + i + 'USDT&interval=5m&limit=2'
+        url_5 = 'https://api3.binance.com/api/v3/klines?symbol=' + i + 'USDT&interval=5m&limit=2'
 
-        data = requests.get(url)
-        data_json = data.json()[0]
-        print(data_json)
-        buy = float(data_json[9])
-        vol = float(data_json[5])
-        bfb = (buy / vol) * 100
-        buy_list.append(round(bfb))
+        data_5 = requests.get(url_5)
+        data_json_5 = data_5.json()[0]
+        # print(data_json_5)
+        buy_5 = float(data_json_5[9])
+        vol_5 = float(data_json_5[5])
+        bfb_5 = (buy_5 / vol_5) * 100
+        buy_list_5.append(round(bfb_5))
 
-    print(buy_list)
-    sz_min = 0
-    xd_min = 0
-    sz_max = 0
-    xd_max = 0
-    for i in buy_list:
+    print(buy_list_5)
+    sz_min_5 = 0
+    xd_min_5 = 0
+    sz_max_5 = 0
+    xd_max_5 = 0
+    for i in buy_list_5:
         if i >= 60:
-            sz_min = sz_min + 1
+            sz_min_5 = sz_min_5 + 1
         if i <= 40:
-            xd_min = xd_min + 1
+            xd_min_5 = xd_min_5 + 1
         if i >= 70:
-            sz_max = sz_max + 1
+            sz_max_5 = sz_max_5 + 1
         if i <= 30:
-            xd_max = xd_max + 1
+            xd_max_5 = xd_max_5 + 1
 
-    open_time = int(float(data_json[0]) / 1000)
-    td = timedelta(hours=8)
-    tz = timezone(td)
-    dt = datetime.fromtimestamp(open_time, tz)
-    dt = dt.strftime('%m-%d %H:%M')
+    open_time_5 = int(float(data_json_5[0]) / 1000)
+    td_5 = timedelta(hours=8)
+    tz_5 = timezone(td_5)
+    dt_5 = datetime.fromtimestamp(open_time_5, tz_5)
+    dt_5 = dt_5.strftime('%m-%d %H:%M')
 
-    if sz_max > 8:
-        txt = dt + "---5分钟该位置出现-超级-积极买入---" + str(sz_max)
-        xiaoding.send_text(msg=txt, is_at_all=True)
-    elif sz_min > 8:
-        txt = dt + "---5分钟该位置出现-普通-积极买入---" + str(sz_min)
-        xiaoding.send_text(msg=txt, is_at_all=False)
+    if sz_max_5 > 8:
+        txt_5 = dt_5 + "---5分钟该位置出现-超级-积极买入---" + str(sz_max_5)
+        xiaoding.send_text(msg=txt_5, is_at_all=True)
+    elif sz_min_5 > 8:
+        txt_5 = dt_5 + "---5分钟该位置出现-普通-积极买入---" + str(sz_min_5)
+        xiaoding.send_text(msg=txt_5, is_at_all=False)
     else:
-        print("买入--还未满足条件")
+        print("5分买入--还未满足条件")
 
-    if xd_max > 8:
-        txt = dt + "---5分钟该位置出现-超级-积极卖出---" + str(xd_max)
-        xiaoding.send_text(msg=txt, is_at_all=True)
+    if xd_max_5 > 8:
+        txt_5 = dt_5 + "---5分钟该位置出现-超级-积极卖出---" + str(xd_max_5)
+        xiaoding.send_text(msg=txt_5, is_at_all=True)
 
-    elif xd_min > 8:
-        txt = dt + "---5分钟该位置出现-普通-积极卖出---" + str(xd_min)
-        xiaoding.send_text(msg=txt, is_at_all=False)
+    elif xd_min_5 > 8:
+        txt_5 = dt_5 + "---5分钟该位置出现-普通-积极卖出---" + str(xd_min_5)
+        xiaoding.send_text(msg=txt_5, is_at_all=False)
     else:
-        print("卖出--还未满足条件")
+        # print("5分卖出--还未满足条件")
+        xiaoding.send_text(msg="还未满足条件", is_at_all=False)
 
-    time.sleep(150)
+    buy_list_15 = []
+    for i in symbol_m:
+        url_15 = 'https://api3.binance.com/api/v3/klines?symbol=' + i + 'USDT&interval=15m&limit=2'
 
+        data_15 = requests.get(url_15)
+        data_json_15 = data_15.json()[0]
+        # print(data_json_15)
+        buy_15 = float(data_json_15[9])
+        vol_15 = float(data_json_15[5])
+        bfb_15 = (buy_15 / vol_15) * 100
+        buy_list_15.append(round(bfb_15))
+
+    print(buy_list_15)
+    sz_min_15 = 0
+    xd_min_15 = 0
+    sz_max_15 = 0
+    xd_max_15 = 0
+    for i in buy_list_15:
+        if i >= 60:
+            sz_min_15 = sz_min_15 + 1
+        if i <= 40:
+            xd_min_15 = xd_min_15 + 1
+        if i >= 70:
+            sz_max_15 = sz_max_15 + 1
+        if i <= 30:
+            xd_max_15 = xd_max_15 + 1
+
+    open_time_15 = int(float(data_json_15[0]) / 1000)
+    td_15 = timedelta(hours=8)
+    tz_15 = timezone(td_15)
+    dt_15 = datetime.fromtimestamp(open_time_15, tz_15)
+    dt_15 = dt_15.strftime('%m-%d %H:%M')
+
+    if sz_max_15 > 8:
+        txt_15 = dt_15 + "---15分钟该位置出现-超级-积极买入---" + str(sz_max_15)
+        xiaoding.send_text(msg=txt_15, is_at_all=True)
+    elif sz_min_15 > 8:
+        txt_15 = dt_15 + "---15分钟该位置出现-普通-积极买入---" + str(sz_min_15)
+        xiaoding.send_text(msg=txt_15, is_at_all=False)
+    else:
+        print("15分买入--还未满足条件")
+
+    if xd_max_15 > 8:
+        txt_15 = dt_15 + "---15分钟该位置出现-超级-积极卖出---" + str(xd_max_15)
+        xiaoding.send_text(msg=txt_15, is_at_all=True)
+
+    elif xd_min_15 > 8:
+        txt_15 = dt_15 + "---15分钟该位置出现-普通-积极卖出---" + str(xd_min_15)
+        xiaoding.send_text(msg=txt_15, is_at_all=False)
+    else:
+        print("15分卖出--还未满足条件")
+
+    time.sleep(300)
