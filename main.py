@@ -84,8 +84,8 @@ while True:
         txt_5 = dt_5 + "---5分钟该位置出现-普通-积极卖出---" + str(xd_min_5)
         xiaoding.send_text(msg=txt_5, is_at_all=False)
     else:
-        # print("5分卖出--还未满足条件")
-        xiaoding.send_text(msg="还未满足条件", is_at_all=False)
+        print("5分卖出--还未满足条件")
+#         xiaoding.send_text(msg="还未满足条件", is_at_all=False)
 
     buy_list_15 = []
     for i in symbol_m:
