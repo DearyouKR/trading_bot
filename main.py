@@ -3,7 +3,10 @@ import time
 from dingtalkchatbot.chatbot import DingtalkChatbot
 from datetime import datetime, timedelta, timezone
 
-
+# WebHook地址
+webhook = 'https://oapi.dingtalk.com/robot/send?access_token=01fafa4c3136f5821ae28ad25a54af044d481a9a43dee0cac6bb05f4948a2c26'
+secret = 'SEC113bdfe8e1843a8fc863042a0c8ca681049fdb8e2da5b7a36e8e6c2ba3765e14'
+xiaoding = DingtalkChatbot(webhook, secret=secret)
 #
 symbol_m = [
     "BTC",
