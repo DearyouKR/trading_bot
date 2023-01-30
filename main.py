@@ -3,10 +3,7 @@ import time
 from dingtalkchatbot.chatbot import DingtalkChatbot
 from datetime import datetime, timedelta, timezone
 
-# WebHook地址
-webhook = 'https://oapi.dingtalk.com/robot/send?access_token=01fafa4c3136f5821ae28ad25a54af044d481a9a43dee0cac6bb05f4948a2c26'
-secret = 'SEC113bdfe8e1843a8fc863042a0c8ca681049fdb8e2da5b7a36e8e6c2ba3765e14'
-xiaoding = DingtalkChatbot(webhook, secret=secret)
+
 #
 symbol_m = [
     "BTC",
@@ -68,24 +65,24 @@ while True:
     dt_5 = dt_5.strftime('%m-%d %H:%M')
 
     if sz_max_5 > 8:
-        txt_5 = dt_5 + "---5分钟该位置出现-超级-积极买入---" + str(sz_max_5)
+        txt_5 = dt_5 + "---5分钟前20出现-超级-积极买入---" + str(sz_max_5)
         xiaoding.send_text(msg=txt_5, is_at_all=True)
     elif sz_min_5 > 8:
-        txt_5 = dt_5 + "---5分钟该位置出现-普通-积极买入---" + str(sz_min_5)
+        txt_5 = dt_5 + "---5分钟前20出现-普通-积极买入---" + str(sz_min_5)
         xiaoding.send_text(msg=txt_5, is_at_all=False)
     else:
         print("5分买入--还未满足条件")
 
     if xd_max_5 > 8:
-        txt_5 = dt_5 + "---5分钟该位置出现-超级-积极卖出---" + str(xd_max_5)
+        txt_5 = dt_5 + "---5分钟前20出现-超级-积极卖出---" + str(xd_max_5)
         xiaoding.send_text(msg=txt_5, is_at_all=True)
 
     elif xd_min_5 > 8:
-        txt_5 = dt_5 + "---5分钟该位置出现-普通-积极卖出---" + str(xd_min_5)
+        txt_5 = dt_5 + "---5分钟前20出现-普通-积极卖出---" + str(xd_min_5)
         xiaoding.send_text(msg=txt_5, is_at_all=False)
     else:
-        print("5分卖出--还未满足条件")
-#         xiaoding.send_text(msg="还未满足条件", is_at_all=False)
+        print(i + "--还未满足条件")
+        # xiaoding.send_text(msg="还未满足条件", is_at_all=False)
 
     buy_list_15 = []
     for i in symbol_m:
@@ -121,22 +118,22 @@ while True:
     dt_15 = dt_15.strftime('%m-%d %H:%M')
 
     if sz_max_15 > 8:
-        txt_15 = dt_15 + "---15分钟该位置出现-超级-积极买入---" + str(sz_max_15)
+        txt_15 = dt_15 + "---15分钟前20出现-超级-积极买入---" + str(sz_max_15)
         xiaoding.send_text(msg=txt_15, is_at_all=True)
     elif sz_min_15 > 8:
-        txt_15 = dt_15 + "---15分钟该位置出现-普通-积极买入---" + str(sz_min_15)
+        txt_15 = dt_15 + "---15分钟前20出现-普通-积极买入---" + str(sz_min_15)
         xiaoding.send_text(msg=txt_15, is_at_all=False)
     else:
         print("15分买入--还未满足条件")
 
     if xd_max_15 > 8:
-        txt_15 = dt_15 + "---15分钟该位置出现-超级-积极卖出---" + str(xd_max_15)
+        txt_15 = dt_15 + "---15分钟前20出现-超级-积极卖出---" + str(xd_max_15)
         xiaoding.send_text(msg=txt_15, is_at_all=True)
 
     elif xd_min_15 > 8:
-        txt_15 = dt_15 + "---15分钟该位置出现-普通-积极卖出---" + str(xd_min_15)
+        txt_15 = dt_15 + "---15分钟前20出现-普通-积极卖出---" + str(xd_min_15)
         xiaoding.send_text(msg=txt_15, is_at_all=False)
     else:
-        print("15分卖出--还未满足条件")
+        print(i + "--还未满足条件")
 
     time.sleep(300)
